@@ -1,0 +1,11 @@
+@mixin phones{
+  @media screen and (max-width: $phones){
+    @content;
+  }
+}
+
+@mixin phonesMinHeight{
+  @media screen and (max-height: $phonesMinHeight){
+    @content;
+  }
+}

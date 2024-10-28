@@ -1,0 +1,54 @@
+// ПРАВОЕ ОБЛАЧКО
+@keyframes cloudRight {
+  0% { 
+    right: 50%;
+  }
+  50% {
+    right: 0%;
+    transform: translateX(66%);
+  }
+  100% {
+    right: 50%;
+  } 
+}
+
+@keyframes cloudRightMobile {
+  0% { 
+    right: 100%;
+  }
+  50% {
+    right: 0%;
+    transform: translateX(66%);
+  }
+  100% {
+    right: 100%;
+  } 
+}
+
+
+// ЛЕВОЕ ОБЛАЧКО
+@keyframes cloudLeft {
+  0% { 
+    left: 50%;
+  }
+  50% {
+    left: 0%;
+    transform: translateX(-66%);
+  }
+  100% {
+    left: 50%;
+  } 
+}
+
+@keyframes cloudLeftMobile {
+  0% { 
+    left: 100%;
+  }
+  50% {
+    left: 0%;
+    transform: translateX(-66%);
+  }
+  100% {
+    left: 100%;
+  } 
+}

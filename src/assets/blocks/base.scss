@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+
+html{
+  height: 100%;
+  font-size: $baseFontSize;
+  overflow: hidden;
+
+  @include phones{
+    font-size: 3.333vmin;
+    overflow-y: auto;
+  }
+}
+
+body{
+  height: 100%;
+  font-family: "Montserrat", sans-serif;
+  color: #292929;
+  background: #fff;
+  margin: 0px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  position: relative;
+  z-index: 10000;
+  display: flex;
+  justify-content: center;
+  height: 100%
+}
+
+.container{
+  max-width: $containerWidth; 
+  margin: 0px auto;
+  position: relative;
+}
+
+.button {
+  padding: 20px 32.5px;
+  background-color: $bg-blue;
+  border: 2px solid $whitesmoke;
+  color: $whitesmoke;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19.5px;
+  cursor: pointer;
+  width: fit-content;
+  min-width: 240px;
+
+  &--transparent {
+    background-color: transparent;
+  }
+}

@@ -1,0 +1,21 @@
+//SIZES
+$containerWidth: 940px;
+$baseFontSize: 14px;
+
+//BREAKPOINTS
+$phones: 480px;
+$phonesMinHeight: 700px;
+
+//COLORS
+$bg: #9FB4D2;
+$bg-blue: #314664;
+$whitesmoke: #f5f5f5;
+
+@import '../fonts/Montserrat/stylesheet.css';
+@import 'media.scss';
+@import "./blocks/base.scss";
+@import "./blocks/reset.scss";
+@import "./blocks/keyframesBackground.scss";
+@import "./blocks/keyframesForm.scss";
+@import "./blocks/mainPage.scss";
+@import "./blocks/form.scss";

@@ -1,0 +1,341 @@
+.form-overlay{
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-color: rgba(49, 70, 100, 0.7);
+  z-index: 100;
+
+  &--greeting:before, 
+  &--greeting:after {
+    content: " ";
+    position: absolute;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &--greeting:before {   
+    width: 606px;
+    height: 501px;
+    animation: cloudRight 50s ease;
+    animation-iteration-count: infinite;
+    top: 36px;
+    transform: translateX(100%);
+    background: url("../components/icons/cloudRight.svg");
+    
+    @include phones{
+      width: 326px;
+      height: 269px;
+      top: 29px;
+      animation: cloudRightMobile 30s ease;
+      background-size: contain;
+    }
+  }
+
+  &--greeting:after {
+    width: 632px;
+    height: 327px;
+    animation: cloudLeft 50s ease;
+    animation-iteration-count: infinite;
+    bottom: 38.39px;
+    transform: translateX(-81%);
+    background: url("../components/icons/cloudLeft.svg");
+
+    @include phones{
+      width: 440px;
+      height: 228px;
+      bottom: 38px;
+      animation: cloudLeftMobile 30s ease;
+      background-size: contain;
+    }
+  }
+}
+
+#greetingForm,
+#successForm {
+  display: none;
+  border-radius: 50px;
+  position: relative;
+  padding: 211px 78px 74px 77px;
+  width: 100%;
+  background: radial-gradient(100% 100% at 0% 0%, rgba(250, 240, 239, 0.45) 0%, rgba(119, 130, 161, 0.45) 60.42%, rgba(74, 89, 110, 0.9) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+  backdrop-filter: blur(42px);
+  box-shadow: -5px -5px 120px -10px rgba(245, 245, 245, 0.31) inset;
+  border: 2px solid;
+  border-image-source: linear-gradient(169.15deg, rgba(255, 255, 255, 0.4) 0%, rgba(238, 237, 237, 0.2) 96.79%);
+  z-index: 10;
+  max-width: 521px;
+
+  @include phones{
+    max-width: 291px;
+    padding: 118px 27px 35px 46px;
+    border-radius: 28px;
+    border: 1.12px solid;
+    border-image-source: linear-gradient(169.15deg, rgba(255, 255, 255, 0.4) 0%, rgba(238, 237, 237, 0.2) 96.79%);
+    backdrop-filter: blur(23.458736419677734px);
+    box-shadow: -2.79px -2.79px 67.02px -5.59px rgba(245, 245, 245, 0.31) inset;
+  }
+}
+
+#greetingForm {
+  .close {
+    position: absolute;
+    left: 29.58px;
+    top: 29px;
+    width: 37.84px;
+    height: 40px;
+    background-image: url("../components/icons/closeIcon.svg");
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: opacity .3s ease;
+
+    &:hover {
+      opacity: 0.6;
+      transition: opacity .3s ease;
+    }
+
+    @include phones{
+      left: 16px;
+      top: 16px;
+      width: 21px;
+      height: 22px;
+    }
+  }
+
+  .weather {
+    position: absolute;
+    right: 51px;
+    top: 39px;
+
+    @include phones{
+      right: 5px;
+      top: 22px;
+    }
+
+    span {
+      display: block;
+      margin-left: 5px;
+      color: #fff;
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 18.29px;
+      margin-bottom: 21px; 
+
+      @include phones{
+        font-size: 10px;
+        line-height: 12px;
+        margin-bottom: 7.6px;
+        margin-left: 3px;
+      }
+    }
+
+    img {
+      width: 152px;
+      height: auto;
+      aspect-ratio: 152 / 152;
+
+      @include phones{
+        width: 85px;
+      }
+    }
+  }
+}
+
+#successForm {
+  p {
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18.29px;
+    margin-bottom: 21px; 
+
+    @include phones{
+      font-size: 10px;
+      line-height: 12px;
+      margin-bottom: 7.6px;
+    }
+  }
+
+  .button{
+    margin: 0 auto;
+  }
+}
+
+.modal-title {
+  display: block;
+  color: #fff;
+  font-size: 45px;
+  line-height: 54.86px;
+  font-weight: 600;
+  margin-bottom: 50px;
+
+  @include phones{
+    font-size: 25px;
+    line-height: 30.5px;
+    margin-bottom: 30.5px;
+  }
+}
+
+.form__group {
+  margin-bottom: 31px;
+
+  &:last-of-type {
+    margin-bottom: 50px;
+    
+    @include phones{
+      margin-bottom: 27.9px;
+    }
+  }
+
+  @include phones{
+    margin-bottom: 17.3px;
+  }
+
+  input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #fff;
+    padding: 0px 0px 9px;
+    font-size: 26px;
+    line-height: 31.69px;
+    color: #fff;
+    background: transparent;
+
+    @include phones{
+      font-size: 14px;
+      line-height: 17px;
+      padding-bottom: 6px;
+      max-width: 201px;
+    }
+
+    &:focus,
+    &:focus-visible,
+    &:active {
+      outline: none;
+      border: none;
+      border-bottom: 1px solid #fff;
+    }
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover, 
+    &:-webkit-autofill:focus {
+      background-color: initial !important;
+      color: #fff !important;
+      -webkit-text-fill-color: #fff !important;
+      -webkit-box-shadow: none !important;
+      transition: background-color 5000s ease-in-out 0s;
+    }
+
+    &::placeholder {
+      color: #fff;
+    }
+  }
+}
+
+.form__buttons {
+
+  .button {
+    font-size: 21px;
+    width: 100%;
+    font-weight: 700;
+    line-height: 25.6px;
+    padding: initial;
+    padding-top: 17px;
+    padding-bottom: 17px;
+    margin-bottom: 40px;
+
+    @include phones{
+      font-size: 12px;
+      line-height: 14.6px;
+      padding-top: 9.26px;
+      padding-bottom: 9.26px;
+      margin-bottom: 31.3px;
+      min-width: initial;
+      max-width: 204px;
+    }
+  }
+}
+
+.form__rules {
+  input {
+    display: none;
+
+    &:checked + label:after {
+      opacity: 1;
+      transition: opacity .3s ease;
+    }
+  }
+
+  label {
+    display: flex;
+    position: relative;
+    align-items: center;
+    cursor: pointer;
+
+    &:before {
+      content: " ";
+      min-width: 24px;
+      height: 24px;
+      display: block;
+      border: 1px solid #fff;
+      margin-right: 18px;
+
+      @include phones{
+        min-width: 13.4px;
+        height: 13.4px;
+        margin-right: 9.59px;
+      }
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 3px;
+      width: 18px;
+      height: 14px;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 16'%3e%3cpath fill='none' d='M1 7L7.54545 15L19 1' stroke='white'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100%;
+      opacity: 0;
+      transition: opacity .3s ease;
+
+      @include phones{
+        width: 10px;
+        height: 7.8px;
+        left: 1.68px;
+      }
+
+      a {
+        @include phones{
+          text-wrap: nowrap;
+        }
+      }
+    }
+
+    span {
+      color: #fff;
+      font-size: 13px;
+      line-height: 15.85px;
+      font-weight: 500;
+      -webkit-user-select: none; /* Chrome/Safari */
+      -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* IE/Edge */
+      user-select: none;
+      margin-bottom: 0px;
+
+      @include phones{
+        font-size: 10px;
+        line-height: 12.2px;
+      }
+    }
+  }
+}
