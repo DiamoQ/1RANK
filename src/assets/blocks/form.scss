@@ -313,11 +313,11 @@
         height: 7.8px;
         left: 1.68px;
       }
+    }
 
-      a {
-        @include phones{
-          text-wrap: nowrap;
-        }
+    a {
+      @include phones{
+        text-wrap: nowrap;
       }
     }
 
