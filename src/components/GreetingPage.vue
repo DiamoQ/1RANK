@@ -32,7 +32,7 @@
           <input id="name" name="name" type="text" placeholder="Имя" class="form__input" required/>
         </div>
         <div class="form__group">
-          <input id="phone" name="phone" type="text" placeholder="Телефон" ref="phoneInput" class="form__input phone" required/>
+          <input id="phone" name="phone" pattern=".{0}|.{18,}" type="tel" placeholder="Телефон" ref="phoneInput" class="form__input phone" required/>
         </div>
         <div class="form__buttons">
           <button type="submit" class="button button--transparent">Узнать подробности</button>
@@ -60,13 +60,20 @@
     // ОТКРЫТИЕ МОДАЛКИ
     $('.greeting__button').on('click', function () {
         $('#greetingForm').css("display", "block").fadeIn(400);		
-        $('.form-overlay').css("display", "flex").hide().fadeIn(400);
+        $('.form-overlay').css("display", "flex").fadeIn(400);
         return false;
     });
 
     $("#greetingForm .close").on('click', function () {
       $(this).parents('.form-overlay').fadeOut(400);
-      $('#greetingForm').css("display", "none").fadeOut(400);		
+      $('#greetingForm').css("display", "none").fadeOut(400);
+
+      
+      if ($('.form-overlay').hasClass("sended")) {
+        $(this).parents('.form-overlay').removeClass("sended");
+        $(this).parents('.form-overlay').fadeOut(400);
+        $('#successForm').fadeOut(400);
+      }
     });
 
     $(document).keydown(function(e) {
@@ -74,13 +81,26 @@
         e.stopPropagation();
         $('#greetingForm').css("display", "none").fadeOut(400);		
         $('.form-overlay').fadeOut(400);
+
+        if ($('.form-overlay').hasClass("sended")) {
+          console.log("hello2")
+          $('.form-overlay').removeClass("sended");
+          $('.form-overlay').fadeOut(400);
+          $('#successForm').fadeOut(400);
+        }
       }
     });
 
     $('.form-overlay').click(function(e) {
       if ($(e.target).closest('#greetingForm').length == 0) {
         $('#greetingForm').css("display", "none").fadeOut(400);		
-        $(this).fadeOut(400);					
+        $(this).fadeOut(400);			
+
+        if ($(this).hasClass("sended")) {
+          $(this).removeClass("sended");
+          $(this).fadeOut(400);
+          $('#successForm').fadeOut(400);
+        }		
       }
     });
   });
@@ -97,14 +117,19 @@
       if (response.success) {
         $('#greetingForm').fadeOut(400, function() {		
           $('#successForm').fadeIn(400);
+          $('.form-overlay').addClass("sended");
         });
 
         // Очистка полей формы
         $('.greeting__form')[0].reset();
         
+       
         setTimeout(function(){
-          $('.form-overlay').fadeOut(400);
-          $('#successForm').fadeOut(400);
+          if ($('.form-overlay').hasClass("sended")) {
+            console.log("hello");
+            $('.form-overlay').fadeOut(400);
+            $('#successForm').fadeOut(400);
+          }
         }, 5000);
       }
     });
